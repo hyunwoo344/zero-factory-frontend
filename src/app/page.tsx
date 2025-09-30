@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import KakaoMap from '@/components/KakaoMap'
 
 // 아이콘 컴포넌트들
 function MajesticonsCupLine() {
@@ -133,75 +134,29 @@ export default function Home() {
 
       {/* Map Container */}
       <div className="flex h-[452px] items-start overflow-hidden px-3 py-0 w-full">
-        <div className="flex-1 bg-[rgba(0,0,0,0.05)] h-full overflow-hidden relative rounded-md">
-          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 w-[336px] h-[336px]">
-            {/* Map Background */}
-            <div className="absolute inset-0 bg-gray-100 rounded-lg"></div>
-            
-            {/* Map Markers */}
-            <div className="absolute top-[26.19%] left-[10.12%] w-[26.286px] h-[26.286px] bg-[rgba(112,112,112,0.8)] rounded-[13.143px] flex items-center justify-center">
-              <div className="w-[19px] h-[19px] text-white">
-                <MajesticonsCupLine />
-              </div>
-            </div>
-            
-            <div className="absolute top-[74.41%] left-[29.76%] w-[26.286px] h-[26.286px] bg-[rgba(112,112,112,0.8)] rounded-[13.143px] flex items-center justify-center">
-              <div className="w-[21.143px] h-[21.143px] text-white">
-                <MdiRecycle />
-              </div>
-            </div>
-            
-            <div className="absolute top-[67.56%] left-[0.59%] w-[26.286px] h-[26.286px] bg-[rgba(112,112,112,0.8)] rounded-[13.143px] flex items-center justify-center">
-              <div className="w-[19.714px] h-[19.714px] text-white">
-                <JamBottle />
-              </div>
-            </div>
-            
-            <div className="absolute top-[42px] left-[168px] w-[26.286px] h-[26.286px] bg-[rgba(112,112,112,0.8)] rounded-[13.143px] flex items-center justify-center">
-              <div className="w-[19.714px] h-[19.714px] text-white">
-                <JamBottle />
-              </div>
-            </div>
-            
-            <div className="absolute top-[245px] left-[283px] w-[32.571px] h-[32.571px] bg-[rgba(112,112,112,0.8)] rounded-[16.286px] flex items-center justify-center border-2 border-black">
-              <span className="text-[24.783px] font-medium text-black">-</span>
-            </div>
-            
-            <div className="absolute top-[284px] left-[283px] w-[32.571px] h-[32.571px] bg-[rgba(112,112,112,0.8)] rounded-[16.286px] flex items-center justify-center border-2 border-black">
-              <div className="w-[24px] h-[24px] text-black">
-                <EvaNavigationOutline />
-              </div>
-            </div>
-            
-            <div className="absolute top-[206px] left-[283px] w-[32.571px] h-[32.571px] bg-[rgba(112,112,112,0.8)] rounded-[16.286px] flex items-center justify-center border-2 border-black">
-              <span className="text-[24.783px] font-medium text-black">+</span>
-            </div>
-            
-            {/* Filter and Add Places Buttons */}
-            <div className="absolute top-[10px] left-[-4px] w-[77px] h-[27.271px] bg-[rgba(101,101,101,0.7)] rounded-[6.417px] flex items-center px-2">
-              <div className="w-[16.042px] h-[16.042px] text-black mr-1">
+        <div className="flex-1 h-full overflow-hidden relative rounded-md">
+          {/* 카카오맵 컴포넌트 */}
+          <KakaoMap 
+            width="100%" 
+            height="452px" 
+            className="w-full h-full"
+          />
+          
+          {/* 지도 위에 오버레이 버튼들 */}
+          <div className="absolute top-2 left-2 flex gap-2 z-10">
+            <button className="bg-[rgba(101,101,101,0.7)] rounded-[6.417px] flex items-center px-2 py-1 text-[12.069px] font-medium text-black">
+              <div className="w-4 h-4 mr-1">
                 <MiFilter />
               </div>
-              <span className="text-[12.069px] font-medium text-black">filter</span>
-            </div>
+              filter
+            </button>
             
-            <div className="absolute top-[10px] left-[64px] w-[116px] h-[27px] bg-[rgba(101,101,101,0.7)] rounded-[6.417px] flex items-center px-2">
-              <div className="w-[16px] h-[16px] text-black mr-1">
+            <button className="bg-[rgba(101,101,101,0.7)] rounded-[6.417px] flex items-center px-2 py-1 text-[12.069px] font-medium text-black">
+              <div className="w-4 h-4 mr-1">
                 <IcBaselinePlace />
               </div>
-              <span className="text-[12.069px] font-medium text-black">Add Places</span>
-            </div>
-          </div>
-          
-          <div className="absolute left-4 right-4 text-center text-[rgba(0,0,0,0.5)] text-base font-medium" style={{ top: 'calc(50% + 8px)' }}>
-            <p className="mb-0">Kakao Map interface</p>
-            <p>with location markers</p>
-          </div>
-          
-          <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6" style={{ top: 'calc(50% - 12px)' }}>
-            <svg className="w-full h-full" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9S10.62 6.5 12 6.5S14.5 7.62 14.5 9S13.38 11.5 12 11.5Z" fill="currentColor"/>
-            </svg>
+              Add Places
+            </button>
           </div>
         </div>
       </div>
